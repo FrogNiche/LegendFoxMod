@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "devourer",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "killed_by_player"
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "legendfoxes:spore_block",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "legendfoxes:spore_block"
+    },
+    "title": {
+      "translate": "advancements.legendfoxes.kill_devourer.title"
+    },
+    "description": {
+      "translate": "advancements.legendfoxes.kill_devourer.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "legendfoxes:legendfoxes",
+  "criteria": {
+    "devourer": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "legendfoxes:devourer"
+        }
+      }
+    }
+  }
+}

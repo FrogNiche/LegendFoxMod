@@ -1,0 +1,128 @@
+{
+  "devourer_hurt": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt",
+    "sounds": [
+      "legendfoxes:devourer_hurt"
+    ]
+  },
+  "unbreakable_hurt": {
+    "subtitle": "sounds.legendfoxes.unbreakable_hurt",
+    "sounds": [
+      "legendfoxes:unbreakable_hurt"
+    ]
+  },
+  "devourer.idle1": {
+    "subtitle": "sounds.legendfoxes.devourer.idle1",
+    "sounds": [
+      "legendfoxes:devourer.idle1"
+    ]
+  },
+  "devourer.idle2": {
+    "subtitle": "sounds.legendfoxes.devourer.idle2",
+    "sounds": [
+      "legendfoxes:devourer.idle2"
+    ]
+  },
+  "devourer.idle3": {
+    "subtitle": "sounds.legendfoxes.devourer.idle3",
+    "sounds": [
+      "legendfoxes:devourer.idle3"
+    ]
+  },
+  "devourer.idle4": {
+    "subtitle": "sounds.legendfoxes.devourer.idle4",
+    "sounds": [
+      "legendfoxes:devourer.idle4"
+    ]
+  },
+  "devourer.idle5": {
+    "subtitle": "sounds.legendfoxes.devourer.idle5",
+    "sounds": [
+      "legendfoxes:devourer.idle5"
+    ]
+  },
+  "devourer.idle6": {
+    "subtitle": "sounds.legendfoxes.devourer.idle6",
+    "sounds": [
+      "legendfoxes:devourer.idle6"
+    ]
+  },
+  "devourer.idle7": {
+    "subtitle": "sounds.legendfoxes.devourer.idle7",
+    "sounds": [
+      "legendfoxes:devourer.idle7"
+    ]
+  },
+  "devourer.idle8": {
+    "subtitle": "sounds.legendfoxes.devourer.idle8",
+    "sounds": [
+      "legendfoxes:devourer.idle8"
+    ]
+  },
+  "devourer.idle9": {
+    "subtitle": "sounds.legendfoxes.devourer.idle9",
+    "sounds": [
+      "legendfoxes:devourer.idle9"
+    ]
+  },
+  "devourer.walk1": {
+    "subtitle": "sounds.legendfoxes.devourer.walk1",
+    "sounds": [
+      "legendfoxes:devourer.walk1"
+    ]
+  },
+  "devourer.walk2": {
+    "subtitle": "sounds.legendfoxes.devourer.walk2",
+    "sounds": [
+      "legendfoxes:devourer.walk2"
+    ]
+  },
+  "devourer.walk3": {
+    "subtitle": "sounds.legendfoxes.devourer.walk3",
+    "sounds": [
+      "legendfoxes:devourer.walk3"
+    ]
+  },
+  "devourer.walk4": {
+    "subtitle": "sounds.legendfoxes.devourer.walk4",
+    "sounds": [
+      "legendfoxes:devourer.walk4"
+    ]
+  },
+  "devourer.walk5": {
+    "subtitle": "sounds.legendfoxes.devourer.walk5",
+    "sounds": [
+      "legendfoxes:devourer.walk5"
+    ]
+  },
+  "devourer.walk6": {
+    "subtitle": "sounds.legendfoxes.devourer.walk6",
+    "sounds": [
+      "legendfoxes:devourer.walk6"
+    ]
+  },
+  "devourer.walk7": {
+    "subtitle": "sounds.legendfoxes.devourer.walk7",
+    "sounds": [
+      "legendfoxes:devourer.walk7"
+    ]
+  },
+  "devourer.walk8": {
+    "subtitle": "sounds.legendfoxes.devourer.walk8",
+    "sounds": [
+      "legendfoxes:devourer.walk8"
+    ]
+  },
+  "devourer.walk9": {
+    "subtitle": "sounds.legendfoxes.devourer.walk9",
+    "sounds": [
+      "legendfoxes:devourer.walk9"
+    ]
+  },
+  "devourer.walk10": {
+    "subtitle": "sounds.legendfoxes.devourer.walk10",
+    "sounds": [
+      "legendfoxes:devourer.walk10"
+    ]
+  }
+}

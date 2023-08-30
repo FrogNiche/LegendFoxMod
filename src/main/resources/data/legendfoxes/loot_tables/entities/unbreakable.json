@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "unbreakable",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "killed_by_player"
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "legendfoxes:unbreakable_cannon",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
