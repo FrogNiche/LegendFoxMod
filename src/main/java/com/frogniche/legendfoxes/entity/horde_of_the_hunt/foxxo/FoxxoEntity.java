@@ -94,7 +94,7 @@ public class FoxxoEntity extends Monster implements GeoEntity, PrepareEntity {
         super.defineSynchedData();
         this.entityData.define(PREPARE, false);
     }
-
+//bruh
     private PlayState predicate(AnimationState<FoxxoEntity> event) {
         if (entityData.get(PREPARE)) {
             event.getController().setAnimation(RawAnimation.begin().then("animation.foxxo.prepare", Animation.LoopType.PLAY_ONCE));
