@@ -12,6 +12,7 @@ import com.frogniche.legendfoxes.entity.variants.spore_medic.SporeMedicEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.DragonFireball;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +27,7 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<BeastEntity>> BEAST = register("beast", EntityType.Builder.of(BeastEntity::new,
             MobCategory.MONSTER));
+
 
     public static final RegistryObject<EntityType<FoxxoEntity>> FOXXO = register("foxxo", EntityType.Builder.of(FoxxoEntity::new,
             MobCategory.MONSTER));
@@ -44,6 +46,8 @@ public class EntityInit {
 
     public static final RegistryObject<EntityType<SeekerEntity>> SEEKER = register("seeker", EntityType.Builder.of(SeekerEntity::new,
             MobCategory.MONSTER));
+
+
     public static final <T extends Entity> RegistryObject<EntityType<T>> register(String name, EntityType.Builder<T> builder){
         return ENTITIES.register(name, () -> builder.build(LegendFoxes.modLoc(name).toString()));
     }

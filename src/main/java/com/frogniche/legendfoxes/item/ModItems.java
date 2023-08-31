@@ -34,6 +34,7 @@ public class ModItems {
     public static final RegistryObject<Item> LEGEND_LOGO = ITEMS.register("legend_logo",
             () -> new Item(new Item.Properties()));
 
+
     public static final RegistryObject<Item> BONE_CLUDGEL = ITEMS.register("bone_cludgel",
             () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,
                     (new Item.Properties()).rarity(Rarity.EPIC)));

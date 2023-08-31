@@ -65,64 +65,94 @@
       "legendfoxes:devourer.idle9"
     ]
   },
-  "devourer.walk1": {
-    "subtitle": "sounds.legendfoxes.devourer.walk1",
+  "entity_devourer_walk1": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walkq",
     "sounds": [
-      "legendfoxes:devourer.walk1"
+      "legendfoxes:devourer.entity_devourer_walk1"
     ]
   },
-  "devourer.walk2": {
-    "subtitle": "sounds.legendfoxes.devourer.walk2",
+  "entity_devourer_walk2": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk2",
     "sounds": [
-      "legendfoxes:devourer.walk2"
+      "legendfoxes:devourer.entity_devourer_walk2"
     ]
   },
-  "devourer.walk3": {
-    "subtitle": "sounds.legendfoxes.devourer.walk3",
+  "entity_devourer_walk3": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk3",
     "sounds": [
-      "legendfoxes:devourer.walk3"
+      "legendfoxes:devourer.entity_devourer_walk3"
     ]
   },
-  "devourer.walk4": {
-    "subtitle": "sounds.legendfoxes.devourer.walk4",
+  "entity_devourer_walk4": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk4",
     "sounds": [
-      "legendfoxes:devourer.walk4"
+      "legendfoxes:devourer.entity_devourer_walk4"
     ]
   },
-  "devourer.walk5": {
-    "subtitle": "sounds.legendfoxes.devourer.walk5",
+  "entity_devourer_walk5": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk5",
     "sounds": [
-      "legendfoxes:devourer.walk5"
+      "legendfoxes:devourer.entity_devourer_walk5"
     ]
   },
-  "devourer.walk6": {
-    "subtitle": "sounds.legendfoxes.devourer.walk6",
+  "entity_devourer_walk6": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk6",
     "sounds": [
-      "legendfoxes:devourer.walk6"
+      "legendfoxes:devourer.entity_devourer_walk6"
     ]
   },
-  "devourer.walk7": {
-    "subtitle": "sounds.legendfoxes.devourer.walk7",
+  "entity_devourer_walk7": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk7",
     "sounds": [
-      "legendfoxes:devourer.walk7"
+      "legendfoxes:devourer.entity_devourer_walk7"
     ]
   },
-  "devourer.walk8": {
-    "subtitle": "sounds.legendfoxes.devourer.walk8",
+  "entity_devourer_walk8": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk8",
     "sounds": [
-      "legendfoxes:devourer.walk8"
+      "legendfoxes:devourer.entity_devourer_walk8"
     ]
   },
-  "devourer.walk9": {
-    "subtitle": "sounds.legendfoxes.devourer.walk9",
+  "entity_devourer_walk9": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk9",
     "sounds": [
-      "legendfoxes:devourer.walk9"
+      "legendfoxes:devourer.entity_devourer_walk9"
     ]
   },
-  "devourer.walk10": {
-    "subtitle": "sounds.legendfoxes.devourer.walk10",
+  "entity_devourer_walk10": {
+    "subtitle": "sounds.legendfoxes.entity_devourer_walk10",
     "sounds": [
-      "legendfoxes:devourer.walk10"
+      "legendfoxes:devourer.entity_devourer_walk10"
+    ]
+  },
+  "devourer_hurt1": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt1",
+    "sounds": [
+      "legendfoxes:devourer_hurt1"
+    ]
+  },
+  "devourer_hurt2": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt2",
+    "sounds": [
+      "legendfoxes:devourer_hurt2"
+    ]
+  },
+  "devourer_hurt3": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt3",
+    "sounds": [
+      "legendfoxes:devourer_hurt3"
+    ]
+  },
+  "devourer_hurt4": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt4",
+    "sounds": [
+      "legendfoxes:devourer_hurt4"
+    ]
+  },
+  "devourer_hurt5": {
+    "subtitle": "sounds.legendfoxes.devourer_hurt5",
+    "sounds": [
+      "legendfoxes:devourer_hurt5"
     ]
   }
 }

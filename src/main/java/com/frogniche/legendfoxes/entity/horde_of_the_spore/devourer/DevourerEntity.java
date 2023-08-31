@@ -1,7 +1,7 @@
 package com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer;
 
-import com.frogniche.legendfoxes.entity.horde_of_the_bastion.unbreakable.UnbreakableEntity;
 import com.frogniche.legendfoxes.sound.ModSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.chat.Component;
@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -23,18 +22,21 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
@@ -43,11 +45,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-import static oshi.util.UserGroupInfo.getUser;
-
 
 public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
-
+    private static final EntityDataAccessor<Boolean> DATA_IS_CHARGING = SynchedEntityData.defineId(Ghast.class, EntityDataSerializers.BOOLEAN);
+    private int explosionPower = 1;
     protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
             BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
@@ -176,12 +177,82 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Villager.class, true));
+        this.goalSelector.addGoal(7, new DevourerEntity.DevourerSpitGoal(this));
 
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 10f));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.5d));
 
     }
 
+public boolean isCharging() {
+        return this.entityData.get(DATA_IS_CHARGING);
+        }
+
+public void setCharging(boolean p_32759_) {
+        this.entityData.set(DATA_IS_CHARGING, p_32759_);
+        }
+
+public int getExplosionPower() {
+        return this.explosionPower;
+        }
+    static class DevourerSpitGoal extends Goal {
+        private final DevourerEntity devourer;
+        public int chargeTime;
+
+        public DevourerSpitGoal(DevourerEntity p_32776_) {
+            this.devourer = p_32776_;
+        }
+
+        public boolean canUse() {
+            return this.devourer.getTarget() != null;
+        }
+
+        public void start() {
+            this.chargeTime = 0;
+        }
+
+        public void stop() {
+            this.devourer.setCharging(false);
+        }
+
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
+
+        public void tick() {
+            LivingEntity livingentity = this.devourer.getTarget();
+            if (livingentity != null) {
+                double d0 = 64.0D;
+                if (livingentity.distanceToSqr(this.devourer) < 4096.0D && this.devourer.hasLineOfSight(livingentity)) {
+                    Level level = this.devourer.level;
+                    ++this.chargeTime;
+                    if (this.chargeTime == 10 && !this.devourer.isSilent()) {
+                        level.levelEvent((Player)null, 1015, this.devourer.blockPosition(), 0);
+                    }
+
+                    if (this.chargeTime == 20) {
+                        double d1 = 4.0D;
+                        Vec3 vec3 = this.devourer.getViewVector(1.0F);
+                        double d2 = livingentity.getX() - (this.devourer.getX() + vec3.x * 4.0D);
+                        double d3 = livingentity.getY(0.5D) - (0.5D + this.devourer.getY(0.5D));
+                        double d4 = livingentity.getZ() - (this.devourer.getZ() + vec3.z * 4.0D);
+                        if (!this.devourer.isSilent()) {
+                            level.levelEvent((Player)null, 1016, this.devourer.blockPosition(), 0);
+                        }
+
+                        LargeFireball largefireball = new LargeFireball(level, this.devourer, d2, d3, d4, this.devourer.getExplosionPower());
+                        largefireball.setPos(this.devourer.getX() + vec3.x * 4.0D, this.devourer.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
+                        level.addFreshEntity(largefireball);
+                        this.chargeTime = -40;
+                    }
+                } else if (this.chargeTime > 0) {
+                    --this.chargeTime;
+                }
+
+                this.devourer.setCharging(this.chargeTime > 10);
+            }
+        }
+    }
 
     @Override
     protected void defineSynchedData() {
@@ -192,7 +263,14 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
+        if (tag.contains("ExplosionPower", 99)) {
+            this.explosionPower = tag.getByte("ExplosionPower");
+            this.roarCooldown = tag.getInt("roar_cooldown");
+            this.explodingCooldown = tag.getInt("exploding_cooldown");
+            this.entityData.set(ROAR, tag.getBoolean("roar"));
+            this.entityData.set(EXPLODING, tag.getBoolean("exploding"));
+        }
+
         this.roarCooldown = tag.getInt("roar_cooldown");
         this.explodingCooldown = tag.getInt("exploding_cooldown");
         this.entityData.set(ROAR, tag.getBoolean("roar"));
@@ -202,10 +280,12 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
+        tag.putByte("ExplosionPower", (byte)this.explosionPower);
         tag.putInt("roar_cooldown", this.roarCooldown);
         tag.putInt("exploding_cooldown", this.explodingCooldown);
         tag.putBoolean("roar", this.entityData.get(ROAR));
         tag.putBoolean("exploding", this.entityData.get(EXPLODING));
+
     }
 
     private PlayState predicate(AnimationState<DevourerEntity> event) {
@@ -223,6 +303,14 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.new_roar",
                     Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
+
+        }
+        if (entityData.get(DATA_IS_CHARGING)) {
+            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.spit",
+                    Animation.LoopType.PLAY_ONCE));
+            return PlayState.CONTINUE;
+
+
 
         }
         if (event.isMoving()) {
@@ -286,7 +374,7 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
             this.addEffect(new MobEffectInstance(MobEffects.POISON, 84, 99, true, true));
         }
     }
-
+// dont you ever worry about da cavities in ur teeth. AND MAKE THE MOST OV ITTT!
 
     protected SoundEvent getAmbientSound() {
         int i = Mth.nextInt(random, 0, ModSounds.ENTITY_DEVOURER_IDLE.size());
@@ -303,8 +391,12 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
         }
         return null;
     }
+    protected void playStepSound(BlockPos p_32159_, BlockState p_32160_) {
+        this.playSound(this.getStepSound(), 0.15F, 1.0F);
+    }
 
-    public SoundEvent getStepSound() {
+
+    protected SoundEvent getStepSound() {
         int i = Mth.nextInt(random, 0, ModSounds.ENTITY_DEVOURER_WALK.size());
         if (i < ModSounds.ENTITY_DEVOURER_WALK.size()) {
             return ModSounds.ENTITY_DEVOURER_WALK.get(i).get();
@@ -314,7 +406,6 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
     protected SoundEvent getDeathSound() {
         return ModSounds.DEVOURER_HURT5.get();
     }
-
     protected float getSoundVolume() {
         return 0.2F;
     }

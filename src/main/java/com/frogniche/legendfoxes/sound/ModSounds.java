@@ -30,6 +30,7 @@ public class ModSounds {
             DEVOURER_HURT5::get
 
     );
+
     public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_IDLE_1 = registerSoundEvent("devourer.idle1");
     public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_IDLE_2 = registerSoundEvent("devourer.idle2");
     public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_IDLE_3 = registerSoundEvent("devourer.idle3");
@@ -50,21 +51,21 @@ public class ModSounds {
             ENTITY_DEVOURER_IDLE_8::get,
             ENTITY_DEVOURER_IDLE_9::get
     );
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK1 = registerSoundEvent("devourer.walk1");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK1 = registerSoundEvent("entity_devourer_walk1");
 
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK2 = registerSoundEvent("devourer.walk2");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK2 = registerSoundEvent("entity_devourer_walk2");
 
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK3 = registerSoundEvent("devourer.walk3");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK3 = registerSoundEvent("entity_devourer_walk3");
 
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK4 = registerSoundEvent("devourer.walk4");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK4 = registerSoundEvent("entity_devourer_walk4");
 
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK5 = registerSoundEvent("devourer.walk5");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK5 = registerSoundEvent("entity_devourer_walk5");
 
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK6 = registerSoundEvent("devourer.walk6");
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK7 = registerSoundEvent("devourer.walk7");
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK8 = registerSoundEvent("devourer.walk8");
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK9 = registerSoundEvent("devourer.walk9");
-    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK10 = registerSoundEvent("devourer.walk10");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK6 = registerSoundEvent("entity_devourer_walk6");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK7 = registerSoundEvent("entity_devourer_walk7");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK8 = registerSoundEvent("entity_devourer_walk8");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK9 = registerSoundEvent("entity_devourer_walk9");
+    public static final RegistryObject<SoundEvent> ENTITY_DEVOURER_WALK10 = registerSoundEvent("entity_devourer_walk10");
 
     public static final ImmutableList<Supplier<SoundEvent>> ENTITY_DEVOURER_WALK = ImmutableList.of(
             ENTITY_DEVOURER_WALK1::get,
@@ -79,10 +80,6 @@ public class ModSounds {
             ENTITY_DEVOURER_WALK10::get
     );
     public static final RegistryObject<SoundEvent> UNBREAKABLE_HURT = registerSoundEvent("unbreakable_hurt");
-//
-    public static final ForgeSoundType BOSS_SOUNDS = new ForgeSoundType(50f, 0.20f,
-        (java.util.function.Supplier<SoundEvent>) ModSounds.UNBREAKABLE_HURT, (java.util.function.Supplier<SoundEvent>) ModSounds.ENTITY_DEVOURER_HURT, (java.util.function.Supplier<SoundEvent>) ModSounds.ENTITY_DEVOURER_WALK,
-            ModSounds.UNBREAKABLE_HURT, ModSounds.UNBREAKABLE_HURT);
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(LegendFoxes.MOD_ID, name);
