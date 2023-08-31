@@ -180,8 +180,7 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
         this.goalSelector.addGoal(7, new DevourerEntity.DevourerSpitGoal(this));
 
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 10f));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.5d));
-
+//ugh
     }
 
 public boolean isCharging() {
