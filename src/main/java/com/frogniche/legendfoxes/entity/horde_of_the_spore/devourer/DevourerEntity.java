@@ -22,10 +22,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
@@ -53,8 +55,10 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
 
             BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
 
-    public static final EntityDataAccessor<Boolean> ROAR = SynchedEntityData.defineId(DevourerEntity.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> EXPLODING = SynchedEntityData.defineId(DevourerEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> ROAR =
+            SynchedEntityData.defineId(DevourerEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> EXPLODING =
+            SynchedEntityData.defineId(DevourerEntity.class, EntityDataSerializers.BOOLEAN);
 
     public static final String CONTROLLER_NAME = "controller";
 
@@ -63,7 +67,7 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
                 .add(Attributes.ARMOR, 15000)
                 .add(Attributes.MOVEMENT_SPEED, 0.4d)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1000000).build();
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.1d).build();
 
 
     }
@@ -175,12 +179,14 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
             }
         });
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, EnderDragon.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Villager.class, true));
         this.goalSelector.addGoal(7, new DevourerEntity.DevourerSpitGoal(this));
 
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 10f));
-//ugh
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 0.5d));
+
     }
 
 public boolean isCharging() {
@@ -239,9 +245,11 @@ public int getExplosionPower() {
                             level.levelEvent((Player)null, 1016, this.devourer.blockPosition(), 0);
                         }
 
-                        LargeFireball largefireball = new LargeFireball(level, this.devourer, d2, d3, d4, this.devourer.getExplosionPower());
-                        largefireball.setPos(this.devourer.getX() + vec3.x * 4.0D, this.devourer.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
-                        level.addFreshEntity(largefireball);
+                        Fireball fireball = new LargeFireball(level,
+                                this.devourer, d2, d3, d4, this.devourer.getExplosionPower());
+                        fireball.setPos(this.devourer.getX() + vec3.x * 4.0D,
+                                this.devourer.getY(0.5D) + 0.5D, fireball.getZ() + vec3.z * 4.0D);
+                        level.addFreshEntity(fireball);
                         this.chargeTime = -40;
                     }
                 } else if (this.chargeTime > 0) {
@@ -299,12 +307,14 @@ public int getExplosionPower() {
             return PlayState.CONTINUE;
         }
         if (entityData.get(ROAR)) {
+            event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.new_roar",
                     Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
 
         }
         if (entityData.get(DATA_IS_CHARGING)) {
+            event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.spit",
                     Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
@@ -313,7 +323,7 @@ public int getExplosionPower() {
 
         }
         if (event.isMoving()) {
-            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.new2", Animation.LoopType.LOOP));
+            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.idle", Animation.LoopType.LOOP));
@@ -376,29 +386,17 @@ public int getExplosionPower() {
 // dont you ever worry about da cavities in ur teeth. AND MAKE THE MOST OV ITTT!
 
     protected SoundEvent getAmbientSound() {
-        int i = Mth.nextInt(random, 0, ModSounds.ENTITY_DEVOURER_IDLE.size());
-        if (i < ModSounds.ENTITY_DEVOURER_IDLE.size()) {
-            return ModSounds.ENTITY_DEVOURER_IDLE.get(i).get();
+        int i = Mth.nextInt(random, 0, ModSounds.DEVOURER_IDLE.size());
+        if (i < ModSounds.DEVOURER_IDLE.size()) {
+            return ModSounds.DEVOURER_IDLE.get(i).get();
         }
         return null;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        int i = Mth.nextInt(random, 0, ModSounds.ENTITY_DEVOURER_HURT.size());
-        if (i < ModSounds.ENTITY_DEVOURER_HURT.size()) {
-            return ModSounds.ENTITY_DEVOURER_HURT.get(i).get();
-        }
-        return null;
-    }
-    protected void playStepSound(BlockPos p_32159_, BlockState p_32160_) {
-        this.playSound(this.getStepSound(), 0.15F, 1.0F);
-    }
-
-
-    protected SoundEvent getStepSound() {
-        int i = Mth.nextInt(random, 0, ModSounds.ENTITY_DEVOURER_WALK.size());
-        if (i < ModSounds.ENTITY_DEVOURER_WALK.size()) {
-            return ModSounds.ENTITY_DEVOURER_WALK.get(i).get();
+        int i = Mth.nextInt(random, 0, ModSounds.DEVOURER_HURT.size());
+        if (i < ModSounds.DEVOURER_HURT.size()) {
+            return ModSounds.DEVOURER_HURT.get(i).get();
         }
         return null;
     }
