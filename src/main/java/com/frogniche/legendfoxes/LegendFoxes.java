@@ -10,8 +10,6 @@ import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoModel;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerRenderer;
-import com.frogniche.legendfoxes.entity.test.unbreakable.TestEntity;
-import com.frogniche.legendfoxes.entity.test.unbreakable.TestRenderer;
 import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntEntity;
 import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntModel;
 import com.frogniche.legendfoxes.entity.variants.mace_runt.MaceRuntEntity;
@@ -91,7 +89,6 @@ public class LegendFoxes {
 //Horde of the spore
 
         EntityRenderers.register(EntityInit.DEVOURER.get(), DevourerRenderer::new);
-        EntityRenderers.register(EntityInit.TEST.get(), TestRenderer::new);
         EntityRenderers.register(EntityInit.FOXXO.get(), makeRenderer(new FoxxoModel()));
         EntityRenderers.register(EntityInit.SEEKER.get(), makeRenderer(new SeekerModel()));
         EntityRenderers.register(EntityInit.UNBREAKABLE.get(), UnbreakableRenderer::new);
@@ -107,7 +104,6 @@ public class LegendFoxes {
             event.accept(ModItems.UNBREAKABLE_CANNON);
             event.accept(ModBlocks.SPORE_BLOCK);
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);
-            event.accept(ModItems.BEAST_SKIRT);
             event.accept(ModItems.UNBREAKABLE_HEAD);
             event.accept(ModItems.DEVOURER_SPIT_CHARGE);
             event.accept(ModItems.DEVOURER_SPAWN_EGG);
@@ -135,7 +131,6 @@ public class LegendFoxes {
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
         event.put(EntityInit.DEVOURER.get(), DevourerEntity.makeAttributes());
-        event.put(EntityInit.TEST.get(), TestEntity.makeAttributes());
 
 
         event.put(EntityInit.FOXXO.get(), FoxxoEntity.makeAttributes());
