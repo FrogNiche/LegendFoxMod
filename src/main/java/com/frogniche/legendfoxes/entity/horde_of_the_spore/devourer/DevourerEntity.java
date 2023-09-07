@@ -1,5 +1,6 @@
 package com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer;
 
+import com.frogniche.legendfoxes.particle.ModParticles;
 import com.frogniche.legendfoxes.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -229,15 +230,19 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
     }
 
     protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
+
         if (this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
             event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.smash",
                     Animation.LoopType.PLAY_ONCE));
 
+
             if (!isExploding() && event.getController().getAnimationState() != AnimationController.State.RUNNING) {
+
                 event.getController().forceAnimationReset();
                 event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.pustule_spew",
                         Animation.LoopType.PLAY_ONCE));
+
             }
             if (!isExploding() && this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
                 event.getController().forceAnimationReset();
@@ -286,9 +291,10 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "roar", 5, this::RoarAnimController));
+        controllers.add(new AnimationController<>(this, "roar", 5, this::RoarAnimController).setParticleKeyframeHandler(particleKeyframeEvent -> ModParticles.SPIT_PARTICLES.get()));
         controllers.add(new AnimationController<>(this, "controller", 5, this::predicate));
-        controllers.add(new AnimationController<>(this, "attack_controller", 5, this::attackPredicate));
+        controllers.add(new AnimationController<>(this, "attack_controller", 5, this::attackPredicate).setParticleKeyframeHandler(particleKeyframeEvent -> ModParticles.SPIT_PARTICLES.get()));
+
     }
 
     @Override

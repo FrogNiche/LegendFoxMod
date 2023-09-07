@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class ModEventsBusEvents {
 
     @SubscribeEvent
-    public static void registerParticleFactories(final ParticleEngine.SpriteParticleRegistration event) {
+    public static void registerParticleFactories(final ModEventsBusEvents event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.SPIT_PARTICLES.get(),
                 SpitParticles.Provider::new);
     }
