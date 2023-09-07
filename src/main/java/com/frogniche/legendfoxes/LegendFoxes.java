@@ -10,6 +10,8 @@ import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoModel;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerRenderer;
+import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestEntity;
+import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestModel;
 import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntEntity;
 import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntModel;
 import com.frogniche.legendfoxes.entity.variants.mace_runt.MaceRuntEntity;
@@ -20,6 +22,7 @@ import com.frogniche.legendfoxes.entity.variants.spore_medic.SporeMedicEntity;
 import com.frogniche.legendfoxes.entity.variants.spore_medic.SporeMedicModel;
 import com.frogniche.legendfoxes.item.ModCreativeModeTabs;
 import com.frogniche.legendfoxes.item.ModItems;
+import com.frogniche.legendfoxes.particle.ModParticles;
 import com.frogniche.legendfoxes.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -27,11 +30,15 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -69,6 +76,7 @@ public class LegendFoxes {
         GeckoLib.initialize();
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModParticles.register(modEventBus);
         ModSounds.register(modEventBus);
         EntityInit.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
@@ -90,6 +98,7 @@ public class LegendFoxes {
 
         EntityRenderers.register(EntityInit.DEVOURER.get(), DevourerRenderer::new);
         EntityRenderers.register(EntityInit.FOXXO.get(), makeRenderer(new FoxxoModel()));
+        EntityRenderers.register(EntityInit.TEST.get(), makeRenderer(new TestModel()));
         EntityRenderers.register(EntityInit.SEEKER.get(), makeRenderer(new SeekerModel()));
         EntityRenderers.register(EntityInit.UNBREAKABLE.get(), UnbreakableRenderer::new);
         EntityRenderers.register(EntityInit.SPORE_MEDIC.get(), makeRenderer(new SporeMedicModel()));
@@ -131,6 +140,7 @@ public class LegendFoxes {
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
         event.put(EntityInit.DEVOURER.get(), DevourerEntity.makeAttributes());
+        event.put(EntityInit.TEST.get(), TestEntity.makeAttributes());
 
 
         event.put(EntityInit.FOXXO.get(), FoxxoEntity.makeAttributes());
@@ -145,6 +155,10 @@ public class LegendFoxes {
     public static class ClientModEvents
     {
         @SubscribeEvent
+        public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
+            event.register(EntityInit.DEVOURER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        }
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code

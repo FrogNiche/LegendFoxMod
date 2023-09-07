@@ -39,6 +39,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
@@ -50,17 +51,17 @@ import java.util.List;
 
 
 public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
-
+    public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected static final RawAnimation ROAR_ANIM = RawAnimation.begin().then("animation.devourer.new_roar",
-            Animation.LoopType.PLAY_ONCE).thenPlay("attack_controller");
+            Animation.LoopType.PLAY_ONCE);
 
 
-
+    protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     private int explosionPower = 1;
     protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
             BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+
     public static final EntityDataAccessor<Boolean> ROAR =
             SynchedEntityData.defineId(DevourerEntity.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> EXPLODING =
@@ -78,7 +79,6 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
 
     }
 
-    protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     private int roarCooldown, explodingCooldown;
     protected boolean dead;
 
@@ -172,6 +172,7 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new RoarGoal<>(this));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.6f, true));
         //make anonymous class so the entity will stop attacking when exploding
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.6f, true) {
             @Override
@@ -227,23 +228,29 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
 
     }
 
-    private PlayState attackPredicate(AnimationState<DevourerEntity> event) {
+    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
         if (this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
             event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.smash",
                     Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
+
+            if (!isExploding() && event.getController().getAnimationState() != AnimationController.State.RUNNING) {
+                event.getController().forceAnimationReset();
+                event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.pustule_spew",
+                        Animation.LoopType.PLAY_ONCE));
+            }
+            if (!isExploding() && this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
+                event.getController().forceAnimationReset();
+                event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.pustule_spew",
+                        Animation.LoopType.PLAY_ONCE));
+                this.swinging = false;
+
+            }
+            return PlayState.CONTINUE;
         }
         return PlayState.CONTINUE;
-        }
 
-    @Override
-    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "roar", 5, this::RoarAnimController));
-        controllers.add(new AnimationController<>(this, "controller", 5, this::predicate));
-        controllers.add(new AnimationController<>(this, "attack_controller", 5, this::attackPredicate));
     }
-
     protected <E extends DevourerEntity> PlayState RoarAnimController(final AnimationState<E> event) {
         if (entityData.get(ROAR)) {
             return event.setAndContinue(ROAR_ANIM);
@@ -251,30 +258,37 @@ public class DevourerEntity extends Monster implements GeoEntity, RoarEntity {
         return PlayState.CONTINUE;
     }
 
-    protected <E extends DevourerEntity> PlayState predicate(final AnimationState<E> event) {
+    private PlayState predicate(AnimationState<DevourerEntity> devourerEntityAnimationState) {
         if (dead) {
-            event.getController().setAnimation(RawAnimation.begin().thenPlayAndHold("animation.horde_spore_chief.death"));
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().thenPlayAndHold("animation.horde_spore_chief.death"));
             return PlayState.CONTINUE;
         }
         if (isExploding()) {
-            event.getController().setAnimation(RawAnimation.begin().thenPlayAndHold("animation.devourer.pustule_spew"));
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().thenPlayAndHold("animation.devourer.pustule_spew"));
             return PlayState.CONTINUE;
         }
         if (entityData.get(ROAR)) {
-            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.new_roar",
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.devourer.new_roar",
                     Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
 
 
         }
-        if (event.isMoving()) {
-            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.walk", Animation.LoopType.LOOP));
+        if (devourerEntityAnimationState.isMoving()) {
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.devourer.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            event.getController().setAnimation(RawAnimation.begin().then("animation.devourer.idle", Animation.LoopType.LOOP));
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.devourer.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 
+    }
+
+    @Override
+    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "roar", 5, this::RoarAnimController));
+        controllers.add(new AnimationController<>(this, "controller", 5, this::predicate));
+        controllers.add(new AnimationController<>(this, "attack_controller", 5, this::attackPredicate));
     }
 
     @Override
