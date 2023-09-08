@@ -112,6 +112,17 @@ public class LegendFoxes {
             event.accept(ModItems.BONE_CLUDGEL);
             event.accept(ModItems.UNBREAKABLE_CANNON);
             event.accept(ModBlocks.SPORE_BLOCK);
+            event.accept(ModBlocks.NETHER_PATH1);
+            event.accept(ModBlocks.NETHER_PATH2);
+            event.accept(ModBlocks.NETHER_PATH3);
+            event.accept(ModBlocks.NETHER_PATH4);
+            event.accept(ModBlocks.NETHER_PATH5);
+            event.accept(ModBlocks.LAVA_DIRT);
+            event.accept(ModBlocks.NETHER_WARPED);
+            event.accept(ModBlocks.NETHER_WARPED_PATH);
+            event.accept(ModBlocks.NO_LAVA_PATH);
+            event.accept(ModBlocks.SPORES);
+
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);
             event.accept(ModItems.UNBREAKABLE_HEAD);
             event.accept(ModItems.DEVOURER_SPIT_CHARGE);

@@ -26,6 +26,46 @@ public class ModBlocks {
             () -> new SlimeBlock(BlockBehaviour.Properties.of(Material.CLAY,
                     MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
 
+    public static final RegistryObject<Block> LAVA_DIRT = registerBlock("lava_dirt",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_PATH1 = registerBlock("nether_path1",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_PATH2 = registerBlock("nether_path2",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_PATH3 = registerBlock("nether_path3",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_PATH4 = registerBlock("nether_path4",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_PATH5 = registerBlock("nether_path5",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_WARPED_PATH = registerBlock("nether_warped_path",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NETHER_WARPED = registerBlock("nether_warped",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> NO_LAVA_PATH = registerBlock("no_lava_path",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> SPORES = registerBlock("spores",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
