@@ -7,17 +7,19 @@ import com.frogniche.legendfoxes.item.item.DevourerSpitChargeItem;
 import com.frogniche.legendfoxes.item.item.ModArmorMaterials;
 import com.frogniche.legendfoxes.item.item.UnbreakableArmor;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static com.frogniche.legendfoxes.block.ModBlocks.BLOCKS;
+
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LegendFoxes.MOD_ID);
     public static final DeferredRegister<Item> SPAWN_EGGS = DeferredRegister.create(ForgeRegistries.ITEMS, LegendFoxes.MOD_ID);
-
 
     public static final RegistryObject<UnbreakableArmor> UNBREAKABLE_HEAD = ITEMS.register("unbreakable_head",
             () -> new UnbreakableArmor(ModArmorMaterials.UNBREAKABLE_ARMOR, ArmorItem.Type.HELMET,

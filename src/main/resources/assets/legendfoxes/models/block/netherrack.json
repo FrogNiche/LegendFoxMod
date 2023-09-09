@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "legendfoxes:block/lava_dirt2"
+    "all": "legendfoxes:block/netherrack"
   }
 }

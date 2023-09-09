@@ -4,10 +4,7 @@ import com.frogniche.legendfoxes.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SlimeBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -30,6 +27,12 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
 
+    public static final RegistryObject<Block> LAVA_DIRT1 = registerBlock("lava_dirt1",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> LAVA_DIRT2 = registerBlock("lava_dirt2",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> NETHER_PATH1 = registerBlock("nether_path1",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
@@ -58,13 +61,37 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
 
+    public static final RegistryObject<Block> NETHERRACK = registerBlock("netherrack",
+            () -> new Block(BlockBehaviour.Properties.of(Material.ICE_SOLID)
+                    .strength(9f).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> WARPED_FRUIT = registerBlock("warped_fruit",
+            () -> new Block(BlockBehaviour.Properties.of(Material.ICE_SOLID)
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
+
+    public static final RegistryObject<Block> WARPED_HOLDER = registerBlock("warped_holder",
+            () -> new Block(BlockBehaviour.Properties.of(Material.ICE_SOLID)
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
+
+    public static final RegistryObject<Block> WARPED_WART = registerBlock("warped_wart",
+            () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
+                    .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.WART_BLOCK))));
+
+    public static final RegistryObject<Block> WARPED_VINES = registerBlock("warped_vines",
+            () -> new GlowLichenBlock(
+                    (BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT,
+                            MaterialColor.GLOW_LICHEN).noCollission().strength(0.2F)
+                            .sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(7)))));
+
     public static final RegistryObject<Block> NO_LAVA_PATH = registerBlock("no_lava_path",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> SPORES = registerBlock("spores",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
-                    .strength(9f).requiresCorrectToolForDrops()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
