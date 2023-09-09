@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "legendfoxes:block/nether_warped_path",
+    "side": "legendfoxes:block/nether_warped_path"
+  }
+}

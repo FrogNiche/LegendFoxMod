@@ -27,12 +27,12 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> LAVA_DIRT1 = registerBlock("lava_dirt1",
+    /* public static final RegistryObject<Block> LAVA_DIRT1 = registerBlock("lava_dirt1",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> LAVA_DIRT2 = registerBlock("lava_dirt2",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
-                    .strength(9f).requiresCorrectToolForDrops()));
+                    .strength(9f).requiresCorrectToolForDrops())); */
     public static final RegistryObject<Block> NETHER_PATH1 = registerBlock("nether_path1",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).requiresCorrectToolForDrops()));
@@ -79,11 +79,16 @@ public class ModBlocks {
                         return 15;
                     }).sound(SoundType.WART_BLOCK))));
 
+    public static final RegistryObject<Block> HALF_NETHER_BLOCK = registerBlock("half_nether_block",
+            () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.WARPED_NYLIUM)
+                    .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.WART_BLOCK))));
+
     public static final RegistryObject<Block> WARPED_VINES = registerBlock("warped_vines",
-            () -> new GlowLichenBlock(
-                    (BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT,
-                            MaterialColor.GLOW_LICHEN).noCollission().strength(0.2F)
-                            .sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(7)))));
+            () -> new GlowLichenBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT,
+                    MaterialColor.GLOW_LICHEN).noCollission().strength(0.2F)
+                    .sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(7))));
 
     public static final RegistryObject<Block> NO_LAVA_PATH = registerBlock("no_lava_path",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
