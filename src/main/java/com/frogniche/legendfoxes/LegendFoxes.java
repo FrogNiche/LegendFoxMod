@@ -118,8 +118,8 @@ public class LegendFoxes {
             event.accept(ModBlocks.NETHER_PATH4);
             event.accept(ModBlocks.NETHER_PATH5);
             event.accept(ModBlocks.LAVA_DIRT);
-         /*   event.accept(ModBlocks.LAVA_DIRT1);
-            event.accept(ModBlocks.LAVA_DIRT2); */
+            event.accept(ModBlocks.SMALL_WARPED);
+            event.accept(ModBlocks.SPORE_ROOF);
             event.accept(ModBlocks.NETHER_WARPED);
             event.accept(ModBlocks.NETHER_WARPED_PATH);
             event.accept(ModBlocks.NO_LAVA_PATH);
@@ -132,7 +132,6 @@ public class LegendFoxes {
 
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);
             event.accept(ModItems.UNBREAKABLE_HEAD);
-            event.accept(ModItems.DEVOURER_SPIT_CHARGE);
             event.accept(ModItems.DEVOURER_SPAWN_EGG);
             event.accept(ModItems.FOXXO_SPAWN_EGG);
             event.accept(ModItems.SEEKER_SPAWN_EGG);

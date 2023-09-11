@@ -1,7 +1,6 @@
 package com.frogniche.legendfoxes.block;
 import com.frogniche.legendfoxes.LegendFoxes;
 import com.frogniche.legendfoxes.item.ModItems;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -20,6 +19,15 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, LegendFoxes.MOD_ID);
 
     public static final RegistryObject<Block> SPORE_BLOCK = registerBlock("spore_block",
+            () -> new SlimeBlock(BlockBehaviour.Properties.of(Material.CLAY,
+                    MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
+
+
+    public static final RegistryObject<Block> SMALL_WARPED = registerBlock("small_warped",
+            () -> new SlimeBlock(BlockBehaviour.Properties.of(Material.CLAY,
+                    MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
+
+    public static final RegistryObject<Block> SPORE_ROOF = registerBlock("spore_roof",
             () -> new SlimeBlock(BlockBehaviour.Properties.of(Material.CLAY,
                     MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
 
@@ -76,7 +84,6 @@ public class ModBlocks {
                     .strength(9f).requiresCorrectToolForDrops().noCollission().lightLevel((p_220873_) -> {
                 return 15;
                     }).sound(SoundType.CHERRY_LEAVES)));
-
     public static final RegistryObject<Block> WARPED_WART = registerBlock("warped_wart",
             () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
                     .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
@@ -89,10 +96,25 @@ public class ModBlocks {
                         return 15;
                     }).sound(SoundType.WART_BLOCK))));
 
+    public static final RegistryObject<Block> SMALL_SHROOM = registerBlock("small_shroom",
+            () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.WARPED_NYLIUM)
+                    .strength(9f).noCollission().strength(0.3F).lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.WART_BLOCK))));
+
+    public static final RegistryObject<Block> WARPED_WART1 = registerBlock("warped_wart1",
+            () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.WARPED_NYLIUM)
+                    .strength(9f).noCollission().strength(0.3F).lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.WART_BLOCK))));
+
     public static final RegistryObject<Block> WARPED_VINES = registerBlock("warped_vines",
             () -> new GlowLichenBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT,
-                    MaterialColor.GLOW_LICHEN).noCollission().strength(0.2F)
-                    .sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(7))));
+                    MaterialColor.GLOW_LICHEN).noCollission()));
+
+    public static final RegistryObject<Block> WARPED_GRASS = registerBlock("warped_grass",
+            () -> new GlowLichenBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT,
+                    MaterialColor.GLOW_LICHEN).noCollission()));
 
     public static final RegistryObject<Block> NO_LAVA_PATH = registerBlock("no_lava_path",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
@@ -103,7 +125,7 @@ public class ModBlocks {
                     .strength(9f).requiresCorrectToolForDrops().noCollission()));
 
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+    public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;

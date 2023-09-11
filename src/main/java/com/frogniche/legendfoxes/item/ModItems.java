@@ -8,6 +8,12 @@ import com.frogniche.legendfoxes.item.item.ModArmorMaterials;
 import com.frogniche.legendfoxes.item.item.UnbreakableArmor;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.grower.OakTreeGrower;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,6 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.frogniche.legendfoxes.block.ModBlocks.BLOCKS;
+import static com.frogniche.legendfoxes.block.ModBlocks.registerBlock;
 
 
 public class ModItems {
@@ -31,9 +38,6 @@ public class ModItems {
     public static final RegistryObject<UnbreakableArmor> BEAST_SKIRT = ITEMS.register("beast_skirt",
             () -> new UnbreakableArmor(ModArmorMaterials.UNBREAKABLE_ARMOR, ArmorItem.Type.LEGGINGS,
                     new Item.Properties().rarity(Rarity.UNCOMMON)));
-
-    public static final RegistryObject<Item> DEVOURER_SPIT_CHARGE = ITEMS.register("devourer_spit_charge", () ->
-            new DevourerSpitChargeItem(new Item.Properties()));
 
     public static final RegistryObject<Item> UNBREAKABLE_CANNON = ITEMS.register("unbreakable_cannon",
             () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,

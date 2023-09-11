@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "legendfoxes:block/small_shroom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "legendfoxes:block/small_shroom"
+    },
+    "axis=z": {
+      "model": "legendfoxes:block/small_shroom",
+      "x": 90
+    }
+  }
+}

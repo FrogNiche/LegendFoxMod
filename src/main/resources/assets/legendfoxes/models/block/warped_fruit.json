@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"1": "legendfoxes:block/warped_fruit",
-		"particle": "legendfoxes:block/spores"
+		"particle": "legendfoxes:block/warped_fruit"
 	},
 	"elements": [
 		{
