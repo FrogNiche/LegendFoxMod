@@ -67,11 +67,15 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WARPED_FRUIT = registerBlock("warped_fruit",
             () -> new Block(BlockBehaviour.Properties.of(Material.ICE_SOLID)
-                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission().lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.CHERRY_LEAVES)));
 
     public static final RegistryObject<Block> WARPED_HOLDER = registerBlock("warped_holder",
             () -> new Block(BlockBehaviour.Properties.of(Material.ICE_SOLID)
-                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission().lightLevel((p_220873_) -> {
+                return 15;
+                    }).sound(SoundType.CHERRY_LEAVES)));
 
     public static final RegistryObject<Block> WARPED_WART = registerBlock("warped_wart",
             () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)

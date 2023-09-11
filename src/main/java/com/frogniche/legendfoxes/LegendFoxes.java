@@ -126,7 +126,6 @@ public class LegendFoxes {
             event.accept(ModBlocks.WARPED_WART);
             event.accept(ModBlocks.HALF_NETHER_BLOCK);
             event.accept(ModBlocks.NETHERRACK);
-            event.accept(ModBlocks.WARPED_VINES);
             event.accept(ModBlocks.SPORES);
             event.accept(ModBlocks.WARPED_FRUIT);
             event.accept(ModBlocks.WARPED_HOLDER);
@@ -142,6 +141,7 @@ public class LegendFoxes {
             event.accept(ModItems.MACE_RUNT_SPAWN_EGG);
             event.accept(ModItems.BLAZE_RUNT_SPAWN_EGG);
             event.accept(ModItems.BEAST_SPAWN_EGG);
+            event.accept(ModItems.BEAST_SKIRT);
         }
     }
 
