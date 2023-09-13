@@ -112,27 +112,13 @@ public class LegendFoxes {
             event.accept(ModItems.BONE_CLUDGEL);
             event.accept(ModItems.UNBREAKABLE_CANNON);
             event.accept(ModBlocks.SPORE_BLOCK);
-            event.accept(ModBlocks.NETHER_PATH1);
-            event.accept(ModBlocks.NETHER_PATH2);
-            event.accept(ModBlocks.NETHER_PATH3);
-            event.accept(ModBlocks.NETHER_PATH4);
-            event.accept(ModBlocks.NETHER_PATH5);
-            event.accept(ModBlocks.LAVA_DIRT);
-            event.accept(ModBlocks.LAVA_DIRT1);
-            event.accept(ModBlocks.LAVA_DIRT2);
-            event.accept(ModBlocks.NETHER_WARPED);
-            event.accept(ModBlocks.NETHER_WARPED_PATH);
-            event.accept(ModBlocks.NO_LAVA_PATH);
-            event.accept(ModBlocks.WARPED_WART);
-            event.accept(ModBlocks.NETHERRACK);
-            event.accept(ModBlocks.WARPED_VINES);
-            event.accept(ModBlocks.SPORES);
-            event.accept(ModBlocks.WARPED_FRUIT);
-            event.accept(ModBlocks.WARPED_HOLDER);
-
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);
             event.accept(ModItems.UNBREAKABLE_HEAD);
-            event.accept(ModItems.DEVOURER_SPIT_CHARGE);
+            event.accept(ModBlocks.SHROOMLIGHT);
+            event.accept(ModBlocks.UNRIPE_SHROOMLIGHT);
+            event.accept(ModBlocks.WARPED_GRASS);
+            event.accept(ModBlocks.WARPED_VINES);
+            event.accept(ModBlocks.WARPED_SPORES);
             event.accept(ModItems.DEVOURER_SPAWN_EGG);
             event.accept(ModItems.FOXXO_SPAWN_EGG);
             event.accept(ModItems.SEEKER_SPAWN_EGG);
@@ -141,6 +127,21 @@ public class LegendFoxes {
             event.accept(ModItems.MACE_RUNT_SPAWN_EGG);
             event.accept(ModItems.BLAZE_RUNT_SPAWN_EGG);
             event.accept(ModItems.BEAST_SPAWN_EGG);
+            event.accept(ModBlocks.DIRT_WITH_MAGMA);
+            event.accept(ModBlocks.DARK_DIRT);
+            event.accept(ModBlocks.DARK_DIRT_PATH);
+            event.accept(ModBlocks.LIGHT_DIRT_PATH);
+            event.accept(ModBlocks.RED_DIRT_PATH);
+            event.accept(ModBlocks.WARPED_BLOCK);
+            event.accept(ModBlocks.CRIMSOM_BLOCK);
+            event.accept(ModBlocks.WARPED_VINES);
+            event.accept(ModBlocks.WARPED_WART);
+            event.accept(ModBlocks.NETHERRACK);
+            event.accept(ModBlocks.WARPED_WART);
+            event.accept(ModBlocks.FLAT_WARPED_WART);
+            event.accept(ModBlocks.MEDIUM_WARPED_WART);
+            event.accept(ModBlocks.SMALL_SHROOMLIGHT);
+
         }
     }
 

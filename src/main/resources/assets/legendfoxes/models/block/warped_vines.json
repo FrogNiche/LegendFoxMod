@@ -1,5 +1,5 @@
 {
-  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
   "textures": {
     "particle": "legendfoxes:block/warped_vines",
     "warped_vines": "legendfoxes:block/warped_vines"

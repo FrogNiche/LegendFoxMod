@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "legendfoxes:block/half_nether_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "legendfoxes:block/half_nether_block"
+    },
+    "axis=z": {
+      "model": "legendfoxes:block/half_nether_block_horizontal",
+      "x": 90
+    }
+  }
+}
