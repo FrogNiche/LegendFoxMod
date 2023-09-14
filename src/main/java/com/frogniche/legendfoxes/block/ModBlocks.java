@@ -21,7 +21,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SPORE_BLOCK = registerBlock("spore_block",
             () -> new SlimeBlock(BlockBehaviour.Properties.of(Material.CLAY,
-                    MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noOcclusion()));
+                    MaterialColor.GRASS).friction(0.8F).sound(SoundType.SLIME_BLOCK).noCollission()));
 
     public static final RegistryObject<Block> DIRT_WITH_MAGMA = registerBlock("dirt_with_magma",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
@@ -41,7 +41,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FLAT_WARPED_WART = registerBlock("flat_warped_wart",
             () -> new Block(BlockBehaviour.Properties.of(Material.GRASS)
-                    .strength(9f).requiresCorrectToolForDrops()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
 
     public static final RegistryObject<Block> WARPED_WART = registerBlock("warped_wart",
             () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
@@ -53,13 +53,20 @@ public class ModBlocks {
             () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
                     .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
                         return 15;
-                    }).sound(SoundType.WART_BLOCK))));
+                    }).sound(SoundType.WART_BLOCK).noCollission())));
+
+    public static final RegistryObject<Block> WARPED_SPROUT = registerBlock("warped_sprout",
+            () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
+                    .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
+                        return 15;
+                    }).sound(SoundType.WART_BLOCK).noCollission())));
+
 
     public static final RegistryObject<Block> SMALL_SHROOMLIGHT = registerBlock("small_shroomlight",
             () -> new RotatedPillarBlock((BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
                     .strength(9f).strength(0.3F).lightLevel((p_220873_) -> {
                         return 15;
-                    }).sound(SoundType.WART_BLOCK))));
+                    }).sound(SoundType.WART_BLOCK).noCollission())));
 
     public static final RegistryObject<Block> WARPED_VINES = registerBlock("warped_vines",
             () -> new GlowLichenBlock(
@@ -69,7 +76,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WARPED_GRASS = registerBlock("warped_grass",
             () -> new Block(BlockBehaviour.Properties.of(Material.GRASS)
-                    .strength(9f).requiresCorrectToolForDrops()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
 
     public static final RegistryObject<Block> LIGHT_DIRT_PATH = registerBlock("light_dirt_path",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
@@ -99,7 +106,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WARPED_SPORES = registerBlock("warped_spores",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
-                    .strength(9f).requiresCorrectToolForDrops()));
+                    .strength(9f).requiresCorrectToolForDrops().noCollission()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

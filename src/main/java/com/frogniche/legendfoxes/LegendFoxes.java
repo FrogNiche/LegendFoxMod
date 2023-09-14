@@ -138,6 +138,7 @@ public class LegendFoxes {
             event.accept(ModBlocks.WARPED_WART);
             event.accept(ModBlocks.NETHERRACK);
             event.accept(ModBlocks.WARPED_WART);
+            event.accept(ModBlocks.WARPED_SPROUT);
             event.accept(ModBlocks.FLAT_WARPED_WART);
             event.accept(ModBlocks.MEDIUM_WARPED_WART);
             event.accept(ModBlocks.SMALL_SHROOMLIGHT);
