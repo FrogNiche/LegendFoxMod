@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "legendfoxes:block/warped_wart_top",
-    "side": "legendfoxes:block/warped_wart"
-  }
-}

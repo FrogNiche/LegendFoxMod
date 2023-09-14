@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "dungeonfoxes:tasty_bone"
+    },
+    "title": "Dungeon Foxes",
+    "description": "Dungeon Foxes",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "dungeonfoxes:textures/block/spore_block.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dungeonfoxes:tasty_bone"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

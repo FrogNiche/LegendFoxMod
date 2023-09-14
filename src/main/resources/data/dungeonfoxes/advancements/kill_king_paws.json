@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "legendfoxes:crown"
+    },
+    "title": {
+      "translate": "advancements.legendfoxes.kill_king_paws.title"
+    },
+    "description": {
+      "translate": "advancements.legendfoxes.kill_king_paws.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "dungeonfoxes:dungeonfoxes",
+  "criteria": {
+    "king_paws": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "legendfoxes:king_paws"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "_comment": "Items",
+  "item.dungeonfoxes.crown": "King Paws' Crown",
+  "item.dungeonfoxes.tasty_bone": "Tasty Bone",
+  "_comment": "Creative Tab(s)",
+
+  "creativemodetab.dungeon_foxes_tab": "Dungeon Foxes",
+
+  "_comment": "Entities",
+  "entity.dungeonfoxes.king_paws": "King Paws",
+
+  "_comment": "Advancements",
+
+  "advancements.legendfoxes.kill_king_paws.description": "Defeat King Paws",
+  "advancements.legendfoxes.kill_king_paws.title": "What did I just do as a creator?",
+  "advancements.legendfoxes.root.description": ""
+}

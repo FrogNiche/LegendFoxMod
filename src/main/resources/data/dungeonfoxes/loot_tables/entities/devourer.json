@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "king_paws",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "killed_by_player"
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "dungeonfoxes:crown",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
