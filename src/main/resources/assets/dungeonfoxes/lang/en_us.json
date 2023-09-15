@@ -2,12 +2,19 @@
   "_comment": "Items",
   "item.dungeonfoxes.crown": "King Paws' Crown",
   "item.dungeonfoxes.tasty_bone": "Tasty Bone",
+  "item.dungeonfoxes.storm_lander": "Storm Lander",
+  "item.dungeonfoxes.king_paws_spawn_egg": "King Spectacular Paws Spawn Egg",
+  "item.dungeonfoxes.wolfie_spawn_egg": "Wolfie Mounder Paws Spawn Egg",
   "_comment": "Creative Tab(s)",
 
   "creativemodetab.dungeon_foxes_tab": "Dungeon Foxes",
 
+"_comment": "Effects",
+  "effect.dungeonfoxes.freeze_effect": "Freeze",
+
   "_comment": "Entities",
   "entity.dungeonfoxes.king_paws": "King Paws",
+  "entity.dungeonfoxes.wolfie_mounder": "Wolfie Mounder",
 
   "_comment": "Advancements",
 

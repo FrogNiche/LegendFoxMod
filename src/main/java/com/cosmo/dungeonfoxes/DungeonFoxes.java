@@ -1,11 +1,14 @@
 package com.cosmo.dungeonfoxes;
 //h
 
+import com.cosmo.dungeonfoxes.effect.ModEffects;
 import com.cosmo.dungeonfoxes.entity.EntityInit;
 
 import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsEntity;
 import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsModel;
 
+import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderEntity;
+import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderModel;
 import com.cosmo.dungeonfoxes.item.ModCreativeModeTabs;
 import com.cosmo.dungeonfoxes.item.ModItems;
 
@@ -60,6 +63,7 @@ public class DungeonFoxes {
         MinecraftForge.EVENT_BUS.register(this);
         GeckoLib.initialize();
         ModItems.register(modEventBus);
+        ModEffects.register(modEventBus);
 
         EntityInit.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
@@ -78,11 +82,15 @@ public class DungeonFoxes {
     private void clientSetup(FMLClientSetupEvent event) {
 
         EntityRenderers.register(EntityInit.KING_PAWS.get(), makeRenderer(new KingPawsModel()));
+        EntityRenderers.register(EntityInit.WOLFIE_MOUNDER.get(), makeRenderer(new WolfieMounderModel()));
     }
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == ModCreativeModeTabs.DUNGEON_FOXES_TAB) {
             event.accept(ModItems.CROWN);
             event.accept(ModItems.TASTY_BONE);
+            event.accept(ModItems.STORM_LANDER);
+            event.accept(ModItems.KING_PAWS_SPAWN_EGG);
+            event.accept(ModItems.WOLFIE_SPAWN_EGG);
 
         }
     }
@@ -101,6 +109,7 @@ public class DungeonFoxes {
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
         event.put(EntityInit.KING_PAWS.get(), KingPawsEntity.makeAttributes());
+        event.put(EntityInit.WOLFIE_MOUNDER.get(), WolfieMounderEntity.makeAttributes());
 
     }
    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

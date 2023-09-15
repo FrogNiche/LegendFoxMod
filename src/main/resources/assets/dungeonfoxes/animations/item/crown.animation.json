@@ -7,10 +7,10 @@
 			"bones": {
 				"crown": {
 					"position": {
-						"vector": [0, 10.25, 0.5]
+						"vector": [0, 13.25, 0.5]
 					},
 					"scale": {
-						"vector": [0.7, 0.7, 0.7]
+						"vector": [0.59, 0.59, 0.59]
 					}
 				}
 			}
