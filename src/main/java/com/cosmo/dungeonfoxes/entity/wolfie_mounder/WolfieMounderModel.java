@@ -18,6 +18,6 @@ public class WolfieMounderModel extends GeoModel<WolfieMounderEntity> {
 
     @Override
     public ResourceLocation getAnimationResource(WolfieMounderEntity animatable) {
-        return DungeonFoxes.modLoc("animations/dungeons_mobs/king_paws.animation.json");
+        return DungeonFoxes.modLoc("animations/dungeons_mobs/wolfie_mounder.animation.json");
     }
 }

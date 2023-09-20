@@ -2,8 +2,8 @@ package com.cosmo.dungeonfoxes.entity;
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;
 
+import com.cosmo.dungeonfoxes.entity.furball.FurballEntity;
 import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsEntity;
-
 import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -22,6 +22,9 @@ public class EntityInit {
                     MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<WolfieMounderEntity>> WOLFIE_MOUNDER = register("wolfie_mounder", EntityType.Builder.of(WolfieMounderEntity::new,
+            MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<FurballEntity>> FURBALL = register("furball", EntityType.Builder.of(FurballEntity::new,
             MobCategory.MONSTER));
 
 

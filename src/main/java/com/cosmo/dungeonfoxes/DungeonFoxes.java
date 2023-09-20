@@ -4,6 +4,8 @@ package com.cosmo.dungeonfoxes;
 import com.cosmo.dungeonfoxes.effect.ModEffects;
 import com.cosmo.dungeonfoxes.entity.EntityInit;
 
+import com.cosmo.dungeonfoxes.entity.furball.FurballEntity;
+import com.cosmo.dungeonfoxes.entity.furball.FurballModel;
 import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsEntity;
 import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsModel;
 
@@ -83,14 +85,17 @@ public class DungeonFoxes {
 
         EntityRenderers.register(EntityInit.KING_PAWS.get(), makeRenderer(new KingPawsModel()));
         EntityRenderers.register(EntityInit.WOLFIE_MOUNDER.get(), makeRenderer(new WolfieMounderModel()));
+        EntityRenderers.register(EntityInit.FURBALL.get(), makeRenderer(new FurballModel()));
     }
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == ModCreativeModeTabs.DUNGEON_FOXES_TAB) {
             event.accept(ModItems.CROWN);
             event.accept(ModItems.TASTY_BONE);
             event.accept(ModItems.STORM_LANDER);
+            event.accept(ModItems.GRAVE_BANE);
             event.accept(ModItems.KING_PAWS_SPAWN_EGG);
             event.accept(ModItems.WOLFIE_SPAWN_EGG);
+            event.accept(ModItems.FURBALL_SPAWN_EGG);
 
         }
     }
@@ -110,6 +115,7 @@ public class DungeonFoxes {
 
         event.put(EntityInit.KING_PAWS.get(), KingPawsEntity.makeAttributes());
         event.put(EntityInit.WOLFIE_MOUNDER.get(), WolfieMounderEntity.makeAttributes());
+        event.put(EntityInit.FURBALL.get(), FurballEntity.makeAttributes());
 
     }
    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

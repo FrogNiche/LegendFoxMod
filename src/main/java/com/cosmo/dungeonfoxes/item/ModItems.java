@@ -30,6 +30,10 @@ public class ModItems {
     public static final RegistryObject<Item> WOLFIE_SPAWN_EGG = ITEMS.register("wolfie_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityInit.WOLFIE_MOUNDER, 0xb7cdbd, 0xafb1b7,
                     new Item.Properties()));
+
+    public static final RegistryObject<Item> FURBALL_SPAWN_EGG = ITEMS.register("furball_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityInit.FURBALL, 0x637078, 0xcc6920,
+                    new Item.Properties()));
     public static final RegistryObject<Item> TASTY_BONE = ITEMS.register("tasty_bone",
             () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,
                     (new Item.Properties()).rarity(Rarity.EPIC)));
@@ -37,6 +41,10 @@ public class ModItems {
     public static final RegistryObject<Item> STORM_LANDER = ITEMS.register("storm_lander",
             () -> new StormLander(Tiers.NETHERITE, 3, -2.4F,
                     (new Item.Properties()).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> GRAVE_BANE = ITEMS.register("grave_bane",
+            () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,
+                    (new Item.Properties()).rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> DUNGEON_FOXES_LOGO = ITEMS.register("dungeon_foxes_logo",
             () -> new Item(new Item.Properties()));

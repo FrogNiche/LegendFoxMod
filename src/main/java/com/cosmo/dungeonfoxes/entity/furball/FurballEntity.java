@@ -1,12 +1,8 @@
-package com.cosmo.dungeonfoxes.entity.wolfie_mounder;
-import com.cosmo.dungeonfoxes.effect.ModEffects;
+package com.cosmo.dungeonfoxes.entity.furball;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -25,7 +21,7 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class WolfieMounderEntity extends Monster implements GeoEntity {
+public class FurballEntity extends Monster implements GeoEntity {
 
     public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
@@ -53,23 +49,12 @@ public class WolfieMounderEntity extends Monster implements GeoEntity {
     }
     protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
-    public WolfieMounderEntity
+    public FurballEntity
             (EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
     }
 
-    @Override
-    public boolean doHurtTarget(Entity opfer) {
-        if(super.doHurtTarget(opfer)){
-            this.level.broadcastEntityEvent(this, (byte)10);
-            return true;
-        } else {
-            if (opfer instanceof LivingEntity) {
-                ((LivingEntity)opfer).addEffect(new MobEffectInstance(ModEffects.FREEZE_EFFECT.get(),100), this);
-            }
-        }
-        return true;
-    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this,
@@ -78,13 +63,13 @@ public class WolfieMounderEntity extends Monster implements GeoEntity {
                 "controller", 5, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<WolfieMounderEntity> wolfieMounderEntityAnimationState) {
+    private PlayState predicate(AnimationState<FurballEntity> furballEntityAnimationState) {
 
-        if (wolfieMounderEntityAnimationState.isMoving()) {
-            wolfieMounderEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.wolfie_mounder.run", Animation.LoopType.LOOP));
+        if (furballEntityAnimationState.isMoving()) {
+            furballEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.furball.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            wolfieMounderEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.wolfie_mounder.idle", Animation.LoopType.LOOP));
+            furballEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.furball.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 
@@ -93,7 +78,7 @@ public class WolfieMounderEntity extends Monster implements GeoEntity {
     protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
         if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
             event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("animation.wolfie_mounder.attack",
+            event.getController().setAnimation(RawAnimation.begin().then("animation.furball.new",
                     Animation.LoopType.PLAY_ONCE));
         }
         return PlayState.CONTINUE;
@@ -121,6 +106,6 @@ public class WolfieMounderEntity extends Monster implements GeoEntity {
     }
 
     protected float getSoundVolume() {
-        return 0.2F;
+        return 0.4F;
     }
 }
