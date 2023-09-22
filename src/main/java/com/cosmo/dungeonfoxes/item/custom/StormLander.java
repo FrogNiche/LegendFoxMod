@@ -1,5 +1,5 @@
 package com.cosmo.dungeonfoxes.item.custom;
-import com.cosmo.dungeonfoxes.effect.ModEffects;
+import com.cosmo.dungeonfoxes.server.effect.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;

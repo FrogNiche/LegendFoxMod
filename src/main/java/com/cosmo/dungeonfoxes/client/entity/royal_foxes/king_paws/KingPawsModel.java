@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.entity.king_paws;
+package com.cosmo.dungeonfoxes.client.entity.royal_foxes.king_paws;
 
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;

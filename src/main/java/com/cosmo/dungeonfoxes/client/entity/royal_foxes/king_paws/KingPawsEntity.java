@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.entity.furball;
+package com.cosmo.dungeonfoxes.client.entity.royal_foxes.king_paws;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,7 +21,7 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class FurballEntity extends Monster implements GeoEntity {
+public class KingPawsEntity extends Monster implements GeoEntity {
 
     public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
@@ -49,7 +49,7 @@ public class FurballEntity extends Monster implements GeoEntity {
     }
     protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
-    public FurballEntity
+    public KingPawsEntity
             (EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
     }
@@ -63,13 +63,13 @@ public class FurballEntity extends Monster implements GeoEntity {
                 "controller", 5, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<FurballEntity> furballEntityAnimationState) {
+    private PlayState predicate(AnimationState<KingPawsEntity> kingPawsEntityAnimationState) {
 
-        if (furballEntityAnimationState.isMoving()) {
-            furballEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.furball.walk", Animation.LoopType.LOOP));
+        if (kingPawsEntityAnimationState.isMoving()) {
+            kingPawsEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.king_paws.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            furballEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.furball.idle", Animation.LoopType.LOOP));
+            kingPawsEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.king_paws.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 
@@ -78,7 +78,7 @@ public class FurballEntity extends Monster implements GeoEntity {
     protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
         if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
             event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("animation.furball.new",
+            event.getController().setAnimation(RawAnimation.begin().then("animation.king_paws.attack",
                     Animation.LoopType.PLAY_ONCE));
         }
         return PlayState.CONTINUE;
@@ -106,6 +106,6 @@ public class FurballEntity extends Monster implements GeoEntity {
     }
 
     protected float getSoundVolume() {
-        return 0.4F;
+        return 0.2F;
     }
 }

@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.entity.furball;
+package com.cosmo.dungeonfoxes.client.entity.royal_foxes.furball;
 
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;

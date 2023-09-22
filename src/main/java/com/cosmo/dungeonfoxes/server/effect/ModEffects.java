@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.effect;
+package com.cosmo.dungeonfoxes.server.effect;
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;
 import net.minecraft.world.effect.MobEffect;

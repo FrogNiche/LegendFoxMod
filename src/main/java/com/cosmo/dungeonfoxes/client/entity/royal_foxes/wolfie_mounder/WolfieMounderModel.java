@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.entity.wolfie_mounder;
+package com.cosmo.dungeonfoxes.client.entity.royal_foxes.wolfie_mounder;
 
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;

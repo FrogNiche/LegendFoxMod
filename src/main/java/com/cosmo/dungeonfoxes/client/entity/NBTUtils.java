@@ -1,4 +1,4 @@
-package com.cosmo.dungeonfoxes.entity;
+package com.cosmo.dungeonfoxes.client.entity;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

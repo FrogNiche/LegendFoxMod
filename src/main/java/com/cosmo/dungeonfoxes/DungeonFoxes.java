@@ -1,16 +1,16 @@
 package com.cosmo.dungeonfoxes;
 //h
 
-import com.cosmo.dungeonfoxes.effect.ModEffects;
-import com.cosmo.dungeonfoxes.entity.EntityInit;
+import com.cosmo.dungeonfoxes.server.effect.ModEffects;
+import com.cosmo.dungeonfoxes.client.entity.EntityInit;
 
-import com.cosmo.dungeonfoxes.entity.furball.FurballEntity;
-import com.cosmo.dungeonfoxes.entity.furball.FurballModel;
-import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsEntity;
-import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsModel;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.furball.FurballEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.furball.FurballModel;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.king_paws.KingPawsEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.king_paws.KingPawsModel;
 
-import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderEntity;
-import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderModel;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.wolfie_mounder.WolfieMounderEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.wolfie_mounder.WolfieMounderModel;
 import com.cosmo.dungeonfoxes.item.ModCreativeModeTabs;
 import com.cosmo.dungeonfoxes.item.ModItems;
 

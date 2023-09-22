@@ -2,7 +2,7 @@ package com.cosmo.dungeonfoxes.item;
 
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;
-import com.cosmo.dungeonfoxes.entity.EntityInit;
+import com.cosmo.dungeonfoxes.client.entity.EntityInit;
 import com.cosmo.dungeonfoxes.item.custom.StormLander;
 import com.cosmo.dungeonfoxes.item.item.CrownArmor;
 import com.cosmo.dungeonfoxes.item.item.ModArmorMaterials;

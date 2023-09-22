@@ -1,10 +1,10 @@
-package com.cosmo.dungeonfoxes.entity;
+package com.cosmo.dungeonfoxes.client.entity;
 
 import com.cosmo.dungeonfoxes.DungeonFoxes;
 
-import com.cosmo.dungeonfoxes.entity.furball.FurballEntity;
-import com.cosmo.dungeonfoxes.entity.king_paws.KingPawsEntity;
-import com.cosmo.dungeonfoxes.entity.wolfie_mounder.WolfieMounderEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.wolfie_mounder.WolfieMounderEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.furball.FurballEntity;
+import com.cosmo.dungeonfoxes.client.entity.royal_foxes.king_paws.KingPawsEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

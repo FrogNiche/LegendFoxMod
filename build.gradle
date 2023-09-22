@@ -116,6 +116,10 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven {
+        name "KosmX's maven"
+        url 'https://maven.kosmx.dev/'
+    }
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
     // Put repositories for dependencies here
@@ -132,6 +136,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.19.4-45.1.0'
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.4:4.1.2')
+    implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:0.4.1+1.19.3")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
