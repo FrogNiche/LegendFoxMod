@@ -4,7 +4,7 @@ import com.frogniche.legendfoxes.LegendFoxes;
 import com.frogniche.legendfoxes.entity.horde_of_the_bastion.unbreakable.UnbreakableEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.beast.BeastEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
+import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.EntityDevourer;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestEntity;
 import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntEntity;
 import com.frogniche.legendfoxes.entity.variants.mace_runt.MaceRuntEntity;
@@ -23,7 +23,7 @@ public class EntityInit {
                     ENTITY_TYPES,
             LegendFoxes.MOD_ID);
 
-     public static final RegistryObject<EntityType<DevourerEntity>> DEVOURER = register("devourer", EntityType.Builder.of(DevourerEntity::new,
+     public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
                     MobCategory.MONSTER).sized(2f, 7f));
 
     public static final RegistryObject<EntityType<TestEntity>> TEST = register("test",

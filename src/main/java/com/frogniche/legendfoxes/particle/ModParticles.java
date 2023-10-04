@@ -13,7 +13,7 @@ public class ModParticles {
 
     public static final RegistryObject<SimpleParticleType> SPIT_PARTICLES =
             PARTICLE_TYPES.register("spit_particles", () ->
-                    new SimpleParticleType(true));
+                    new SimpleParticleType(false));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

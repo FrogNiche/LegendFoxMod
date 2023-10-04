@@ -8,7 +8,7 @@ import com.frogniche.legendfoxes.entity.horde_of_the_hunt.beast.BeastEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.beast.BeastModel;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoModel;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
+import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.EntityDevourer;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerRenderer;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestEntity;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestModel;
@@ -159,7 +159,7 @@ public class LegendFoxes {
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
-        event.put(EntityInit.DEVOURER.get(), DevourerEntity.makeAttributes());
+        event.put(EntityInit.DEVOURER.get(), EntityDevourer.makeAttributes());
         event.put(EntityInit.TEST.get(), TestEntity.makeAttributes());
 
 

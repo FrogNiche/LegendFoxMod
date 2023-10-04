@@ -1,6 +1,5 @@
 package com.frogniche.legendfoxes.entity.horde_of_the_spore.test;
 
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;

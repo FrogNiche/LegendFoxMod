@@ -1,6 +1,6 @@
 package com.frogniche.legendfoxes.entity.horde_of_the_bastion.unbreakable;
 
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
+import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.EntityDevourer;
 import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.RoarEntity;
 import com.frogniche.legendfoxes.sound.ModSounds;
 import net.minecraft.network.chat.Component;
@@ -100,7 +100,7 @@ public class UnbreakableEntity extends Monster implements GeoEntity, RoarEntity 
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new DevourerEntity.RoarGoal<>(this));
+        this.goalSelector.addGoal(1, new EntityDevourer.RoarGoal<>(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.6f, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
         this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));

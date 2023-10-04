@@ -4,7 +4,6 @@ import com.frogniche.legendfoxes.LegendFoxes;
 import com.frogniche.legendfoxes.entity.EntityInit;
 import com.frogniche.legendfoxes.entity.NBTUtils;
 import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
