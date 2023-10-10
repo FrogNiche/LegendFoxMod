@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "legendfoxes:item/logo"
+  },
+  "overrides": [
+    { "predicate": { "angle": 0.000000 }, "model": "legendfoxes:item/logo" },
+    { "predicate": { "angle": 0.015625 }, "model": "legendfoxes:item/logo_1" },
+    { "predicate": { "angle": 0.046875 }, "model": "legendfoxes:item/logo_2" },
+    { "predicate": { "angle": 0.078125 }, "model": "legendfoxes:item/logo_3" }
+  ]
+}

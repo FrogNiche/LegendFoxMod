@@ -1,29 +1,29 @@
 package com.frogniche.legendfoxes;
 
-import com.frogniche.legendfoxes.block.ModBlocks;
-import com.frogniche.legendfoxes.entity.EntityInit;
-import com.frogniche.legendfoxes.entity.horde_of_the_bastion.unbreakable.UnbreakableRenderer;
-import com.frogniche.legendfoxes.entity.horde_of_the_bastion.unbreakable.UnbreakableEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_hunt.beast.BeastEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_hunt.beast.BeastModel;
-import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_hunt.foxxo.FoxxoModel;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.EntityDevourer;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.devourer.DevourerRenderer;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestEntity;
-import com.frogniche.legendfoxes.entity.horde_of_the_spore.test.TestModel;
-import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntEntity;
-import com.frogniche.legendfoxes.entity.variants.blaze_runt.BlazeRuntModel;
-import com.frogniche.legendfoxes.entity.variants.mace_runt.MaceRuntEntity;
-import com.frogniche.legendfoxes.entity.variants.mace_runt.MaceRuntModel;
-import com.frogniche.legendfoxes.entity.variants.seeker.SeekerEntity;
-import com.frogniche.legendfoxes.entity.variants.seeker.SeekerModel;
-import com.frogniche.legendfoxes.entity.variants.spore_medic.SporeMedicEntity;
-import com.frogniche.legendfoxes.entity.variants.spore_medic.SporeMedicModel;
-import com.frogniche.legendfoxes.item.ModCreativeModeTabs;
-import com.frogniche.legendfoxes.item.ModItems;
-import com.frogniche.legendfoxes.particle.ModParticles;
-import com.frogniche.legendfoxes.sound.ModSounds;
+import com.frogniche.legendfoxes.server.block.LFBlockHandler;
+import com.frogniche.legendfoxes.server.entity.LFEntityHandler;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_bastion.unbreakable.UnbreakableRenderer;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_bastion.unbreakable.UnbreakableEntity;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_hunt.beast.BeastEntity;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_hunt.beast.BeastModel;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_hunt.foxxo.FoxxoEntity;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_hunt.foxxo.FoxxoModel;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_spore.devourer.EntityDevourer;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_spore.devourer.DevourerRenderer;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_spore.test.TestEntity;
+import com.frogniche.legendfoxes.server.entity.horde_of_the_spore.test.TestModel;
+import com.frogniche.legendfoxes.server.entity.variants.blaze_runt.BlazeRuntEntity;
+import com.frogniche.legendfoxes.server.entity.variants.blaze_runt.BlazeRuntModel;
+import com.frogniche.legendfoxes.server.entity.variants.mace_runt.MaceRuntEntity;
+import com.frogniche.legendfoxes.server.entity.variants.mace_runt.MaceRuntModel;
+import com.frogniche.legendfoxes.server.entity.variants.seeker.SeekerEntity;
+import com.frogniche.legendfoxes.server.entity.variants.seeker.SeekerModel;
+import com.frogniche.legendfoxes.server.entity.variants.spore_medic.SporeMedicEntity;
+import com.frogniche.legendfoxes.server.entity.variants.spore_medic.SporeMedicModel;
+import com.frogniche.legendfoxes.server.item.tabs.ModCreativeModeTabs;
+import com.frogniche.legendfoxes.server.item.LFItemHandler;
+import com.frogniche.legendfoxes.client.particle.ModParticles;
+import com.frogniche.legendfoxes.client.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -74,11 +74,11 @@ public class LegendFoxes {
 
         MinecraftForge.EVENT_BUS.register(this);
         GeckoLib.initialize();
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
+        LFItemHandler.register(modEventBus);
+        LFBlockHandler.register(modEventBus);
         ModParticles.register(modEventBus);
         ModSounds.register(modEventBus);
-        EntityInit.ENTITIES.register(modEventBus);
+        LFEntityHandler.ENTITIES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addListener(this::clientSetup);
@@ -96,38 +96,44 @@ public class LegendFoxes {
 
 //Horde of the spore
 
-        EntityRenderers.register(EntityInit.DEVOURER.get(), DevourerRenderer::new);
-        EntityRenderers.register(EntityInit.FOXXO.get(), makeRenderer(new FoxxoModel()));
-        EntityRenderers.register(EntityInit.TEST.get(), makeRenderer(new TestModel()));
-        EntityRenderers.register(EntityInit.SEEKER.get(), makeRenderer(new SeekerModel()));
-        EntityRenderers.register(EntityInit.UNBREAKABLE.get(), UnbreakableRenderer::new);
-        EntityRenderers.register(EntityInit.SPORE_MEDIC.get(), makeRenderer(new SporeMedicModel()));
-        EntityRenderers.register(EntityInit.MACE_RUNT.get(), makeRenderer(new MaceRuntModel()));
-        EntityRenderers.register(EntityInit.BLAZE_RUNT.get(), makeRenderer(new BlazeRuntModel()));
-        EntityRenderers.register(EntityInit.BEAST.get(), makeRenderer(new BeastModel()));
-        EntityRenderers.register(EntityInit.BEAST.get(), makeRenderer(new BeastModel()));
+        EntityRenderers.register(LFEntityHandler.DEVOURER.get(), DevourerRenderer::new);
+        EntityRenderers.register(LFEntityHandler.FOXXO.get(), makeRenderer(new FoxxoModel()));
+        EntityRenderers.register(LFEntityHandler.TEST.get(), makeRenderer(new TestModel()));
+        EntityRenderers.register(LFEntityHandler.SEEKER.get(), makeRenderer(new SeekerModel()));
+        EntityRenderers.register(LFEntityHandler.UNBREAKABLE.get(), UnbreakableRenderer::new);
+        EntityRenderers.register(LFEntityHandler.SPORE_MEDIC.get(), makeRenderer(new SporeMedicModel()));
+        EntityRenderers.register(LFEntityHandler.MACE_RUNT.get(), makeRenderer(new MaceRuntModel()));
+        EntityRenderers.register(LFEntityHandler.BLAZE_RUNT.get(), makeRenderer(new BlazeRuntModel()));
+        EntityRenderers.register(LFEntityHandler.BEAST.get(), makeRenderer(new BeastModel()));
+        EntityRenderers.register(LFEntityHandler.BEAST.get(), makeRenderer(new BeastModel()));
     }
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == ModCreativeModeTabs.LEGEND_FOXES_TAB) {
-            event.accept(ModItems.BONE_CLUDGEL);
-            event.accept(ModItems.UNBREAKABLE_CANNON);
-            event.accept(ModBlocks.SPORE_BLOCK);
+            event.accept(LFItemHandler.BONE_CLUDGEL);
+            event.accept(LFItemHandler.UNBREAKABLE_CANNON);
+            event.accept(LFItemHandler.DEVOURER_BANDAGE);
+            event.accept(LFItemHandler.MOB_REMOVER);
+            event.accept(LFItemHandler.UNBREAKABLE_HEAD);
+            event.accept(LFItemHandler.UNBREAKABLE_CHESTPLATE);
+            event.accept(LFItemHandler.DEVOURER_SKIRT);
+            event.accept(LFBlockHandler.DEVOURER_SPORE);
+          /* event.accept(ModBlocks.SPORE_BLOCK);
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);
             event.accept(ModItems.UNBREAKABLE_HEAD);
             event.accept(ModBlocks.SHROOMLIGHT);
             event.accept(ModBlocks.UNRIPE_SHROOMLIGHT);
             event.accept(ModBlocks.WARPED_GRASS);
             event.accept(ModBlocks.WARPED_VINES);
-            event.accept(ModBlocks.WARPED_SPORES);
-            event.accept(ModItems.DEVOURER_SPAWN_EGG);
-            event.accept(ModItems.FOXXO_SPAWN_EGG);
-            event.accept(ModItems.SEEKER_SPAWN_EGG);
-            event.accept(ModItems.SPORE_MEDIC_SPAWN_EGG);
-            event.accept(ModItems.UNBREAKABLE_SPAWN_EGG);
-            event.accept(ModItems.MACE_RUNT_SPAWN_EGG);
-            event.accept(ModItems.BLAZE_RUNT_SPAWN_EGG);
-            event.accept(ModItems.BEAST_SPAWN_EGG);
-            event.accept(ModBlocks.DIRT_WITH_MAGMA);
+           event.accept(ModBlocks.WARPED_SPORES); */
+            event.accept(LFItemHandler.DEVOURER_SPAWN_EGG);
+            event.accept(LFItemHandler.FOXXO_SPAWN_EGG);
+            event.accept(LFItemHandler.SEEKER_SPAWN_EGG);
+            event.accept(LFItemHandler.SPORE_MEDIC_SPAWN_EGG);
+            event.accept(LFItemHandler.UNBREAKABLE_SPAWN_EGG);
+            event.accept(LFItemHandler.MACE_RUNT_SPAWN_EGG);
+            event.accept(LFItemHandler.BLAZE_RUNT_SPAWN_EGG);
+            event.accept(LFItemHandler.BEAST_SPAWN_EGG);
+         /*   event.accept(ModBlocks.DIRT_WITH_MAGMA);
             event.accept(ModBlocks.DARK_DIRT);
             event.accept(ModBlocks.DARK_DIRT_PATH);
             event.accept(ModBlocks.LIGHT_DIRT_PATH);
@@ -141,7 +147,7 @@ public class LegendFoxes {
             event.accept(ModBlocks.WARPED_SPROUT);
             event.accept(ModBlocks.FLAT_WARPED_WART);
             event.accept(ModBlocks.MEDIUM_WARPED_WART);
-            event.accept(ModBlocks.SMALL_SHROOMLIGHT);
+            event.accept(ModBlocks.SMALL_SHROOMLIGHT); */
 
         }
     }
@@ -159,24 +165,24 @@ public class LegendFoxes {
     }
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
-        event.put(EntityInit.DEVOURER.get(), EntityDevourer.makeAttributes());
-        event.put(EntityInit.TEST.get(), TestEntity.makeAttributes());
+        event.put(LFEntityHandler.DEVOURER.get(), EntityDevourer.makeAttributes());
+        event.put(LFEntityHandler.TEST.get(), TestEntity.makeAttributes());
 
 
-        event.put(EntityInit.FOXXO.get(), FoxxoEntity.makeAttributes());
-        event.put(EntityInit.SEEKER.get(), SeekerEntity.makeAttributes());
-        event.put(EntityInit.UNBREAKABLE.get(), UnbreakableEntity.makeAttributes());
-        event.put(EntityInit.SPORE_MEDIC.get(), SporeMedicEntity.makeAttributes());
-        event.put(EntityInit.MACE_RUNT.get(), MaceRuntEntity.makeAttributes());
-        event.put(EntityInit.BLAZE_RUNT.get(), BlazeRuntEntity.makeAttributes());
-        event.put(EntityInit.BEAST.get(), BeastEntity.makeAttributes());
+        event.put(LFEntityHandler.FOXXO.get(), FoxxoEntity.makeAttributes());
+        event.put(LFEntityHandler.SEEKER.get(), SeekerEntity.makeAttributes());
+        event.put(LFEntityHandler.UNBREAKABLE.get(), UnbreakableEntity.makeAttributes());
+        event.put(LFEntityHandler.SPORE_MEDIC.get(), SporeMedicEntity.makeAttributes());
+        event.put(LFEntityHandler.MACE_RUNT.get(), MaceRuntEntity.makeAttributes());
+        event.put(LFEntityHandler.BLAZE_RUNT.get(), BlazeRuntEntity.makeAttributes());
+        event.put(LFEntityHandler.BEAST.get(), BeastEntity.makeAttributes());
     }
    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
-            event.register(EntityInit.DEVOURER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            event.register(LFEntityHandler.DEVOURER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         }
         public static void onClientSetup(FMLClientSetupEvent event)

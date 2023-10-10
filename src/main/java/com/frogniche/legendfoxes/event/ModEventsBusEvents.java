@@ -1,9 +1,7 @@
 package com.frogniche.legendfoxes.event;
 
-import com.frogniche.legendfoxes.particle.ModParticles;
-import com.frogniche.legendfoxes.particle.SpitParticles;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.ParticleEngine;
+import com.frogniche.legendfoxes.client.particle.ModParticles;
+import com.frogniche.legendfoxes.client.particle.SpitParticles;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "legendfoxes:spore_block"
+      "item": "legendfoxes:devourer_spore"
     },
     "title": {
       "translate": "advancements.legendfoxes.kill_devourer.title"

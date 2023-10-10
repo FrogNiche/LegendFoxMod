@@ -1,8 +1,10 @@
 {
   "_comment": "Items",
   "item.legendfoxes.unbreakable_cannon": "The Unbreakable's Cannon",
+  "item.legendfoxes.mob_remover": "Legend Foxes Mob Remover",
   "item.legendfoxes.unbreakable_chestplate": "The Unbreakable's Furnace",
   "item.legendfoxes.unbreakable_head": "The Unbreakable's Helmet",
+  "item.legendfoxes.devourer_skirt": "The Devourer's Skirt",
   "item.legendfoxes.king_paws_spawn_egg": "King Paws Spawn Egg",
   "item.legendfoxes.devourer_spawn_egg": "The Devourer Spawn Egg",
   "item.legendfoxes.foxxo_spawn_egg": "Foxxo Spawn Egg",
@@ -13,10 +15,12 @@
   "item.legendfoxes.mace_runt_spawn_egg": "Mace Runt Spawn Egg",
   "item.legendfoxes.beast_spawn_egg": "The Beast Spawn Egg",
   "item.legendfoxes.bone_cludgel": "Bone Cludgel",
+  "item.legendfoxes.devourer_bandage": "The Devourer's Bandage",
 
   "_comment": "Blocks",
 
   "block.legendfoxes.dirt_with_magma": "Magma Dirt",
+  "block.legendfoxes.devourer_spore": "The Devourer's Pink Spore",
   "block.legendfoxes.dark_dirt": "Dark Dirt",
   "block.legendfoxes.dark_dirt_path": "Dark Dirt Path",
   "block.legendfoxes.light_dirt_path": "Light Dirt Path",
