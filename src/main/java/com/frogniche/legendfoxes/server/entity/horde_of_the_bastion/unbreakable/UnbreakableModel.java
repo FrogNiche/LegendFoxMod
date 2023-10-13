@@ -6,6 +6,8 @@ import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
 public class UnbreakableModel extends GeoModel<UnbreakableEntity> {
+
+
     @Override
     public ResourceLocation getModelResource(UnbreakableEntity object) {
         return LegendFoxes.modLoc("geo/entity/horde_of_the_bastion/unbreakable/unbreakable.geo.json");

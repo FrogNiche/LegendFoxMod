@@ -116,6 +116,7 @@ public class LegendFoxes {
             event.accept(LFItemHandler.UNBREAKABLE_HEAD);
             event.accept(LFItemHandler.UNBREAKABLE_CHESTPLATE);
             event.accept(LFItemHandler.DEVOURER_SKIRT);
+            event.accept(LFItemHandler.DEVOURER_ARMOR);
             event.accept(LFBlockHandler.DEVOURER_SPORE);
           /* event.accept(ModBlocks.SPORE_BLOCK);
             event.accept(ModItems.UNBREAKABLE_CHESTPLATE);

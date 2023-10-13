@@ -4,6 +4,7 @@ package com.frogniche.legendfoxes.server.item;
 import com.frogniche.legendfoxes.LegendFoxes;
 import com.frogniche.legendfoxes.server.entity.LFEntityHandler;
 import com.frogniche.legendfoxes.server.item.armor.ModArmorMaterials;
+import com.frogniche.legendfoxes.server.item.armor.devourer.DevourerCompleteArmor;
 import com.frogniche.legendfoxes.server.item.armor.devourer.DevourerSkirtArmor;
 import com.frogniche.legendfoxes.server.item.armor.unbreakable_armour.UnbreakableArmor;
 import com.frogniche.legendfoxes.server.item.custom.ItemMobRemover;
@@ -30,6 +31,10 @@ public class LFItemHandler {
             () -> new DevourerSkirtArmor(ModArmorMaterials.UNBREAKABLE_ARMOR, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().rarity(Rarity.EPIC)));
 
+    public static final RegistryObject<DevourerCompleteArmor> DEVOURER_ARMOR = ITEMS.register("devourer_armor",
+            () -> new DevourerCompleteArmor(ModArmorMaterials.UNBREAKABLE_ARMOR, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().rarity(Rarity.EPIC)));
+
 
     public static final RegistryObject<Item> UNBREAKABLE_CANNON = ITEMS.register("unbreakable_cannon",
             () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,
@@ -48,6 +53,8 @@ public class LFItemHandler {
     public static final RegistryObject<Item> MOB_REMOVER = ITEMS.register("mob_remover",
             () -> new ItemMobRemover(new Item.Properties()));
 
+    public static final RegistryObject<ArrowItem> SPIT = ITEMS.register("spit",
+            () -> new ArrowItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BONE_CLUDGEL = ITEMS.register("bone_cludgel",
             () -> new SwordItem(Tiers.NETHERITE, 3, -2.4F,
